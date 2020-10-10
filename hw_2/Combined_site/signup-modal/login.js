@@ -11,12 +11,12 @@ function openModal() {
 
 	// When the user starts to type something inside the password field
 	myInput.onkeyup = function() {
-       console.log('helllooo')
+       console.log('text is being inputed: line 14');
 
         /* TODO: Question 1.1: Starts here */
-        var lowerCaseLetters = /a-z/g; // : Fill in the regular experssion for lowerCaseLetters
-        var upperCaseLetters = /A-Z/g; // : Fill in the regular experssion for upperCaseLetters
-        var numbers = /dummy_regex/g; // : Fill in the regular experssion for digits
+        var lowerCaseLetters = /[a-z]/g; // : Fill in the regular experssion for lowerCaseLetters
+        var upperCaseLetters = /[A-Z]/g; // : Fill in the regular experssion for upperCaseLetters
+        var numbers = /[0-9]/g; // : Fill in the regular experssion for digits
         var minLength = 8; // : Change the minimum length to what what it needs to be in the question
         /* TODO: Question 1.1: Ends here */
 
@@ -31,60 +31,89 @@ function openModal() {
          - Each else block stands for a failed condition, so the green check mark needs to be a red cross again.
          - All that you need to do is, in each of the blocks, fill in the correct classNames for the remove and the add methods.
          */
-
+         console.log(letter.classList);
         // Validate lowercase letters
         if(myInput.value.match(lowerCaseLetters)) {
-            letter.classList.remove(""); 
-            letter.classList.add("");
+          console.log('lowercase valid!');
+
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+            console.log(letter.classList);
+
         } else {
-            letter.classList.remove("");
-            letter.classList.add("");
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
         }
 
         // Validate capital letters
         if(myInput.value.match(upperCaseLetters)) {
-            capital.classList.remove("");
-            capital.classList.add("");
+          console.log('uppercase valid!, line 49');
+
+          capital.classList.remove("invalid");
+          capital.classList.add("valid");
+          console.log('uppercase: add valid!');
+
         } else {
-            capital.classList.remove("");
-            capital.classList.add("");
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
         }
 
         // Validate numbers
         if(myInput.value.match(numbers)) {
-            number.classList.remove("");
-            number.classList.add("");
+          console.log('NUMS valid!, ');
+
+            number.classList.remove("invalid");
+            number.classList.add("valid");
         } else {
-            number.classList.remove("");
-            number.classList.add("");
+            number.classList.remove("valid");
+            number.classList.add("invalid");
         }
 
         // Validate length
         if(myInput.value.length >= minLength) {
-            length.classList.remove("");
-            length.classList.add("");
+          console.log('LENGTH valid!, ');
+
+            length.classList.remove("invalid");
+            length.classList.add("valid");
         } else {
-            length.classList.remove("");
-            length.classList.add("");
+            length.classList.remove("valid");
+            length.classList.add("invalid");
         }
         /* TODO: Question 1.2:  Ends here */
-    }
+    };
     /* TODO Question 1.3: Starts here */
     confirmMyInput.onkeyup = function() {
                 // Validate password and confirmPassword
+
+
                 var passEqualsConfPass = (false); // TODO: Change this to the condition that needs to be checked so that the text entered in password equals the text in confirm password
+
+                console.log(myInput.value, confirmMyInput.value);
+
+                if(myInput.value == confirmMyInput.value)
+                {
+                  passEqualsConfPass = true;
+                  console.log('passwords match!, ');
+
+                }
+                else
+                {
+                  passEqualsConfPass = false;
+                  console.log('passwords do nOT match!, ');
+                }
+
                 if(passEqualsConfPass) {
-                    match.classList.remove("");
-                    match.classList.add("");
+                    match.classList.remove("invalid");
+                    match.classList.add("valid");
                 } else {
-                    match.classList.remove("");
-                    match.classList.add("");
+                    match.classList.remove("valid");
+                    match.classList.add("invalid");
                 }
     /* TODO Question 1.3: Starts here */
 
                 // Disable or Enable the button based on the elements in classList
                 enableButton(letter, capital, number, length, match);
-    }
+    };
 }
 
 
@@ -92,12 +121,15 @@ function enableButton(letter, capital, number, length, match) {
     // TODO: Clear this function for students to implement
     var button = document.getElementById('my_submit_button');
     var condition = (false); // TODO: Replace false with the correct condition
-    if(condition) {
+    if(letter.classList == "valid" &&capital.classList == "valid" &&number.classList == "valid" &&length.classList == "valid" ) {
             button.disabled = false;
         }
+    else{
+      button.disabled = true;
+    }
     }
 
 
 function onClickFunction() {
-    alert("Hey! I'm all green! Well done.")
+    alert("Hey! I'm all green! Well done.");
 }
