@@ -4,3 +4,4 @@ This is April Ott's repository for CSCI 3308's homework.
 
 
 HW_1: Create a proffesional website utilizing Bootstrap and html. You can see this at shadedstrike.github.io
+HW_2: Build a tic-tac-toe game with javascript.
