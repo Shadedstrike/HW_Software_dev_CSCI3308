@@ -63,25 +63,33 @@
                var fore = document.getElementById("cards_here"); //pull it on
                var html ="";
                var descriptions = data.photos.photo[x].title;
-               var new_title = descriptions.substring(0,27); //we need to make it fit on the card, and some descriptions are really long.
+               var new_title = descriptions.substring(0,100); //we need to make it fit on the card, and some descriptions are really long.
                console.log("calculated description = ", descriptions)
 
 
               //html to be added
-               html += "<div class='card bg-dark' >"
-               html += "<div style='width:200px;'>";
-               html += "<div style='height:200px;'>";
-               html += "<div class='card-body' dark-bg>";
-               html += "<img src = "+img_link+" class = card-img>";
-               html += "<div class='card-img-overlay'>"
-               html += "<br><br><br><br><br>"
+            //   html += "<div class='card bg-dark' >"
+            //   html += "<div style='width:200px;'>";
+            //   html += "<div style='height:200px;'>";
+            //   html += "<div class='card-body'>";
+          //     html += "<img src = "+img_link+" class = card-img-top>";
+
+            //   html += "<div class='card-img-overlay'>"
+            //   html += "<br><br><br><br><br>"
+            //   html += "<p class='card-text text-light'>"+new_title+"<br>";
+            //   html += "</div>";
+            ///   html += "</div>";
+            //   html += "</div>";
+            //   html += "</div>";
 
 
-               html += "<p class='card-text text-light'>"+new_title+"<br>";
-               html += "</div>";
-               html += "</div>";
-               html += "</div>";
-               html += "</div>";
+        html +=    "<div class='card' style='width: 18rem;'>"
+        html +=      "<img class='card-img-top' src="+img_link+" alt='Card image cap'>"
+        html +=     " <div class='card-body'>"
+        html +=       " <p class='card-text'>"+new_title+"</p>"
+        html +=      "</div>"
+      html +=      "</div>"
+
 
                fore.innerHTML += html;
           }
